@@ -31,11 +31,8 @@ I decided that I wanted to create a password generator and saver because I tend 
 (Will continue digging)
 
 
-### X/X/XX:
-* Text
+### 10/21/24:
 
-
-<!--
 ### Example of a Simple Swing Application:
 a basic example that creates a simple GUI with a button and a label using Swing:
 
@@ -74,4 +71,6 @@ public class SimpleSwingApp {
     }
 }
 ```
--->
+
+The code above is a short button that displays "Click me" and then add frames after the user interacts with it. <br>
+In short, the Swing application can be made into anything interactive.
