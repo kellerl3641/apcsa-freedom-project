@@ -74,3 +74,22 @@ public class SimpleSwingApp {
 
 The code above is a short button that displays "Click me" and then add frames after the user interacts with it. <br>
 In short, the Swing application can be made into anything interactive.
+
+
+11/4/24
+
+11/18
+
+I was planning out my tool and started on the basic set up of SWING library importment and all of them require 
+```java
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.security.SecureRandom;
+```
+import javax.swing.; imports all the classes from the javax.swing package, which are used for creating the graphical user interface components like JFrame, JLabel, JTextField, and JButton.
+import java.awt.; imports all the classes from the java.awt package, which are used for layout management and creating the graphical user interface.
+import java.awt.event.ActionEvent; imports the ActionEvent class, which represents an action event.
+import java.awt.event.ActionListener; imports the ActionListener interface, which is used for receiving action events.
+import java.security.SecureRandom; imports the SecureRandom class, which provides a cryptographically strong random number generator.
