@@ -80,7 +80,7 @@ In short, the Swing application can be made into anything interactive.
 
 11/18
 
-I was planning out my tool and started on the basic set up of SWING library importment and all of them require 
+I was planning out my tool and started on the basic set up of SWING library importment and all of them require
 ```java
 import javax.swing.*;
 import java.awt.*;
@@ -95,3 +95,6 @@ import java.awt.event.ActionListener; imports the ActionListener interface, whic
 import java.security.SecureRandom; imports the SecureRandom class, which provides a cryptographically strong random number generator.
 
 I will begin creating classes next class and learning how to set class.
+
+
+11/
