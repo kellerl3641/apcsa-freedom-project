@@ -24,7 +24,8 @@ public static String generatePassword(int length) {
     return password.toString();
 }
 ```
-This code builds on from past code examples where there has already been a random String object that stores all the characters in the alphabet from letter A to Z and numbers from 0 to 9 that have some special characters (for the computer to later generate)
+This code builds on past code examples where there has already been a random String object that stores all the characters in the alphabet from letter A to Z and numbers from 0 to 9 that have some special characters (for the computer to later generate).
+
 This method takes the **length** input from the user, picks random characters from the `chars` string, and builds a password of the desired length using `StringBuilder`.
 
 The second thing I worked on was **validating user input before generating a password**. I wanted to prevent users from entering non-numeric values or an invalid password length. Here’s how I handled it in my GUI:
@@ -85,7 +86,8 @@ If that still seems annoying to read, check the steps below:
 2. User **clicks "Generate".**  
 3. Code **checks if it’s a valid number** and **between 4-50.**  
 4. If **valid**, show a **random password.**  
-5. If **not valid**, show an **error message.** 
+5. If **not valid**, show an **error message.**
+
 ### Engineering Design Process:
 
 I am now moving from **Step 4(Plan the most promising solution)** to **Step 5 (Create a Prototype)**. The password generation and validation parts are mostly done, so my next step is to **create buttons, frames, and UI components** to make my application user-friendly.
