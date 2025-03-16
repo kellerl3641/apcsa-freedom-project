@@ -3,14 +3,11 @@
 ## Tool: Java Swing
 ## Product: A password generator and saver
 
--
-
 ## Timeline
 
 ### **MVP (Most Viable Product)**
 
 #### **Step 1: Set Up Java Swing UI** ( [ ] Due by 2/21 )
-- [ ] Task (deadline: X)
 - [ ] Create a basic app window (using `JFrame`) (deadline: 2/21)
 - [ ] Add a password display box (Just so users can see what they placed as passwords) (deadline: 2/21)
 - [ ] Add a button to generate a new password (deadline: 2/21)
