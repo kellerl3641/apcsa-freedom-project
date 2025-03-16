@@ -100,40 +100,42 @@ I will begin creating classes next class and learning how to set class.
 1/6/2024
 
 #### **Phase 1: Project Setup**
-- [ ] Create a new Java project in your IDE.  
-- [ ] Import the required packages: `javax.swing`, `java.awt`, `java.util`.  
+- [ ] Create a new Java project in your IDE.
+- [ ] Import the required packages: `javax.swing`, `java.awt`, `java.util`.
 
 #### **Phase 2: Design the User Interface**
-- [ ] Create a `JFrame` window.  
-- [ ] Add these components:  
-   - `JLabel` for instructions.  
-   - `JTextField` for entering website and username.  
-   - `JPasswordField` for entering or displaying the password.  
-   - `JButton` for **Save**, **Generate Password**, and **Copy to Clipboard**.  
-   - `JTable` to display saved passwords.  
-- [ ] Arrange the layout using `JPanel` and `GridLayout`.  
+- [ ] Create a `JFrame` window.
+- [ ] Add these components:
+   - `JLabel` for instructions.
+   - `JTextField` for entering website and username.
+   - `JPasswordField` for entering or displaying the password.
+   - `JButton` for **Save**, **Generate Password**, and **Copy to Clipboard**.
+   - `JTable` to display saved passwords.
+- [ ] Arrange the layout using `JPanel` and `GridLayout`.
 
 #### **Phase 3: Password Generation**
-- [ ] Write a method to generate random passwords using:  
-   - A combination of letters, numbers, and symbols.  
-   - Example: `"ABCabc123!@#"`  
-- [ ] Let the password appear in the password field when the **Generate Password** button is clicked.  
+- [ ] Write a method to generate random passwords using:
+   - A combination of letters, numbers, and symbols.
+   - Example: `"ABCabc123!@#"`
+- [ ] Let the password appear in the password field when the **Generate Password** button is clicked.
 
 #### **Phase 4: Save and Display Passwords**
-- [ ] Store credentials using an `ArrayList` or `HashMap`.  
-- [ ] Display saved passwords in the `JTable`.  
-- [ ] Make sure each entry includes:  
-   - Website name  
-   - Username  
-   - Password  
+- [ ] Store credentials using an `ArrayList` or `HashMap`.
+- [ ] Display saved passwords in the `JTable`.
+- [ ] Make sure each entry includes:
+   - Website name
+   - Username
+   - Password
 
 #### **Phase 5: Event Handling (Button Clicks)**
-- [ ] **Save Button:** Save the entered details to the list and update the table.  
-- [ ] **Generate Button:** Call the password generation method.  
-- [ ] **Copy to Clipboard Button:** Copy the generated password to the clipboard using `Toolkit`.  
+- [ ] **Save Button:** Save the entered details to the list and update the table.
+- [ ] **Generate Button:** Call the password generation method.
+- [ ] **Copy to Clipboard Button:** Copy the generated password to the clipboard using `Toolkit`.
 
 #### **Phase 6: File Saving (Optional)**
-- [ ] Save passwords to a text file (`.txt`) using `FileWriter`.  
-- [ ] Load data from the file when the app starts.  
+- [ ] Save passwords to a text file (`.txt`) using `FileWriter`.
+- [ ] Load data from the file when the app starts.
 
 Next step would be to actually start on part one
+
+03/03/25
