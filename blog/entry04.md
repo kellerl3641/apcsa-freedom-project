@@ -81,19 +81,19 @@ The chunk of code above may seem very complicated so let me break it down for yo
   - `"Enter a number between 4 and 50."`
 
 <br>
-If that still seems annoying to read, check the steps below:
-1. User **types a number** in a box.  
-2. User **clicks "Generate".**  
-3. Code **checks if it’s a valid number** and **between 4-50.**  
-4. If **valid**, show a **random password.**  
-5. If **not valid**, show an **error message.**
+If that still seems annoying to read, check the steps below:<br>
+- User types a number in a box.  
+- User clicks "Generate". 
+- Code checks if it’s a valid number and between 4-50. 
+- If valid, show a random password. 
+- If not valid, show an error message.
 
 ### Engineering Design Process:
 
 I am now moving from **Step 4(Plan the most promising solution)** to **Step 5 (Create a Prototype)**. The password generation and validation parts are mostly done, so my next step is to **create buttons, frames, and UI components** to make my application user-friendly.
 
 ### Skills:
-One major skill I developed was **debugging and breaking down code into steps**. Writing out my logic in **plain English first** before coding really helped me understand the process better especially when it came to creating the part where I had to check my user's input.
+One major skill I developed was **debugging and breaking down code into steps**. Writing out my logic in **plain English first** before coding helped me understand the process better especially when it came to creating the part where I had to check my user's input.
 
 For **Entry 5**, I plan to work on creating a **basic UI layout** for the user to better visualize their passwords and feel better when they're looking at my UI layouts.
 <br>
