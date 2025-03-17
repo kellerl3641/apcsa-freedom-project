@@ -82,11 +82,11 @@ The chunk of code above may seem very complicated so let me break it down for yo
 
 <br>
 If that still seems annoying to read, check the steps below:<br>
-- User types a number in a box.  
-- User clicks "Generate". 
-- Code checks if it’s a valid number and between 4-50. 
-- If valid, show a random password. 
-- If not valid, show an error message.
+- User types a number in a box.  <br>
+- User clicks "Generate". <br>
+- Code checks if it’s a valid number and between 4-50. <br>
+- If valid, show a random password. <br>
+- If not valid, show an error message. <br>
 
 ### Engineering Design Process:
 
