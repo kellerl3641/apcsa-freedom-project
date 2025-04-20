@@ -1,4 +1,5 @@
 // sometimes it requires javac -encoding UTF-8 PeppaPasswordManager.java for the emojis
+//javac -encoding UTF-8 PeppaPasswordManager.java (this is for normal github ones)
 //I ran this in VS with java PeppaPasswordManager
 //sometimes it requires this cd "C:\Users\kelle\Downloads\Peppapig" too if personal
 import javax.swing.*;
