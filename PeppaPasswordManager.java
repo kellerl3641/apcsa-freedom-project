@@ -17,7 +17,7 @@ public class PeppaPasswordManager extends JFrame {
 
     public PeppaPasswordManager() {
         setTitle("🐷 Peppa Pig Password Manager 🐽");
-        setSize(450, 350);
+        setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Peppa colors
