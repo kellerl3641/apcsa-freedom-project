@@ -136,6 +136,33 @@ I will begin creating classes next class and learning how to set class.
 - [ ] Save passwords to a text file (`.txt`) using `FileWriter`.
 - [ ] Load data from the file when the app starts.
 
-Next step would be to actually start on part one
+The next step would be to start on part one
 
-03/03/25
+Yau moot yau si boon miu seung bei
+Yiu si ngoh gam maan yi dei duen hei
+MAn nei hoh hang jik ye gon daap tung siu haak gei
+
+Yau moot yu yat si boon miu foon hei
+Joi mo yan yi hau loi faan jue nei
+Yuen gok dak jeung je jaak yam ga jue han lei kei
+Si ngoh ji si gam sai jui hau so yiu dik yan yi
+Ji seung si nei
+__________________________________________________________________________________________________________________________________________
+04/27/25
+I have officially finished my MVP and am ready to move along to my beyond MVP.... Here are some things that I planned to change that could make my app way more flexible and silly.
+✅ = Accomplished
+❎ = Have not yet accomplished
+
+List of extra features that will be added:
+- [❎] Prevents any signs of duplicate passwords (To match the authenticity of an actual password saver)
+- [❎] Clear saved passwords: Deletes all passwords from the screen and file when you press the Clear Button.
+- [❎] Cute sound effects: Plays oink.wav, save.wav, load.wav, clear.wav when the user interacts with the buttons.
+- [❎] Background music: Plays peppa_theme.wav on a loop when the window pops out!
+- [❎] Peppa Pig popups: Cute Peppa images pop up when you click buttons (After saving)
+- [❎] Simple confirmation popups: Always show popups like "Saved! 🎀", "Cleared! 🧹" after each action
+
+
+Important files that I keep in mind for later:
+- Images files that pop up when the user clicks the different buttons: peppa1.png, peppa2.png, peppa3.png
+- - Background Sounds file: peppa_theme.wav
+- Sound Effect Files: oink.wav, save.wav, load.wav, clear.wav
