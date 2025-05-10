@@ -1,29 +1,29 @@
 // sometimes it requires javac -encoding UTF-8 PeppaPasswordManager.java for the emojis
-//javac -encoding UTF-8 PeppaPasswordManager.java (this is for normal github ones)
 //I ran this in VS with java PeppaPasswordManager
 //sometimes it requires this cd "C:\Users\kelle\Downloads\Peppapig" too if personal
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.*;
 import java.security.SecureRandom;
+import javax.sound.sampled.*;
+import java.net.URL;
 
 public class PeppaPasswordManager extends JFrame {
 
     private JTextField snortyPasswordField;
     private JTextArea piggySavedPasswords;
-    private JButton oinkGenerateBtn, muddySaveBtn, georgeLoadBtn;
+    private JButton oinkGenerateBtn, muddySaveBtn, georgeLoadBtn, clearBtn, clearAllPasswordsBtn;
+    private Clip backgroundMusic;
 
     public PeppaPasswordManager() {
-        setTitle("🐷 Peppa Pig Password Manager 🐽");
-        setSize(400, 300);
+        setTitle("🐷 Peppa Pig Password Manager 🐷");
+        setSize(400, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Peppa colors
         Color peppaPink = new Color(255, 182, 193);
         Color pastelBlue = new Color(173, 216, 230);
-        Font peppaFont = new Font("Comic Sans MS", Font.BOLD, 14); // close to Peppa style
+        Font peppaFont = new Font("Comic Sans MS", Font.BOLD, 14);
 
         // Initialize components
         snortyPasswordField = new JTextField(20);
@@ -37,32 +37,51 @@ public class PeppaPasswordManager extends JFrame {
         oinkGenerateBtn = new JButton("Generate Piggy Passwords!! 🐽");
         muddySaveBtn = new JButton("SAY 'Oink' to Save 🐷");
         georgeLoadBtn = new JButton("See ALL THEM Saved Ones 🐖");
+        clearBtn = new JButton("Clear Everything! 💧");
+        clearAllPasswordsBtn = new JButton("Clear All Passwords 🐷");
 
         oinkGenerateBtn.setFont(peppaFont);
         muddySaveBtn.setFont(peppaFont);
         georgeLoadBtn.setFont(peppaFont);
+        clearBtn.setFont(peppaFont);
+        clearAllPasswordsBtn.setFont(peppaFont);
 
         // Action Listeners
-        oinkGenerateBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String peppaPassword = generatePeppaPassword(12);
-                snortyPasswordField.setText(peppaPassword);
-            }
+        oinkGenerateBtn.addActionListener(e -> {
+            String peppaPassword = generatePeppaPassword(12);
+            snortyPasswordField.setText(peppaPassword);
+            playSound("oink.wav");
+            showRandomPeppaPopup("Generated a snorty password! 🐷");
+            showSimpleMessage("Password Generated! 🐽");
         });
 
-        muddySaveBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                savePeppaPassword(snortyPasswordField.getText());
-            }
+        muddySaveBtn.addActionListener(e -> {
+            savePeppaPassword(snortyPasswordField.getText());
         });
 
-        georgeLoadBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                loadGeorgePasswords();
-            }
+        georgeLoadBtn.addActionListener(e -> {
+            loadGeorgePasswords();
+            playSound("boom.wav");
+            showRandomPeppaPopup("Loaded all your piggy passwords! 🐖");
+            showSimpleMessage("Passwords Loaded! 📖");
+        });
+
+        clearBtn.addActionListener(e -> {
+            snortyPasswordField.setText("");
+            piggySavedPasswords.setText("");
+            clearPeppaPasswordsFile();
+            playSound("grunt.wav");
+            showRandomPeppaPopup("Cleared everything! 💧");
+            showSimpleMessage("Everything Cleared! 🧹");
+        });
+
+        // New action listener for the "Clear All Passwords" button
+        clearAllPasswordsBtn.addActionListener(e -> {
+            piggySavedPasswords.setText("");
+            clearPeppaPasswordsFile();
+            playSound("clear.wav");
+            showRandomPeppaPopup("Cleared all piggy passwords! 🐷");
+            showSimpleMessage("All Passwords Cleared! 🧹");
         });
 
         // Layout
@@ -73,6 +92,8 @@ public class PeppaPasswordManager extends JFrame {
         topPanel.add(oinkGenerateBtn);
         topPanel.add(muddySaveBtn);
         topPanel.add(georgeLoadBtn);
+        topPanel.add(clearBtn);
+        topPanel.add(clearAllPasswordsBtn);
 
         JScrollPane scrollPane = new JScrollPane(piggySavedPasswords);
 
@@ -94,15 +115,37 @@ public class PeppaPasswordManager extends JFrame {
 
     private void savePeppaPassword(String password) {
         if (password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Oopsie! Nothing to save! 🐷", "Uh-oh!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Oopsie! Nothing to save! 🐷", "Uh-oh! 🐷", JOptionPane.ERROR_MESSAGE);
             return;
         }
+
+        if (isPasswordDuplicate(password)) {
+            JOptionPane.showMessageDialog(this, "You already saved this one! 🐖 Try a new oink!", "Duplicate Oink 🐖", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         try (FileWriter writer = new FileWriter("peppa_passwords.txt", true)) {
             writer.write(password + "\n");
-            JOptionPane.showMessageDialog(this, "Saved in Peppa’s vault! 🎀");
+            playSound("save.wav");
+            showRandomPeppaPopup("Saved in Peppa’s vault! 🎀🐷");
+            showSimpleMessage("Password Saved! 🎀");
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean isPasswordDuplicate(String password) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("peppa_passwords.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.trim().equals(password.trim())) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            // Ignore if file does not exist yet
+        }
+        return false;
     }
 
     private void loadGeorgePasswords() {
@@ -117,7 +160,59 @@ public class PeppaPasswordManager extends JFrame {
         }
     }
 
+    private void playSound(String soundName) {
+        try {
+            URL url = getClass().getResource(soundName);
+            if (url != null) {
+                AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                clip.start();
+            }
+        } catch (Exception e) {
+            System.out.println("Sound not found: " + soundName);
+        }
+    }
+
+    private void startBackgroundMusic(String musicFile) {
+        try {
+            URL url = getClass().getResource(musicFile);
+            if (url != null) {
+                AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+                backgroundMusic = AudioSystem.getClip();
+                backgroundMusic.open(audioIn);
+                backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);
+            }
+        } catch (Exception e) {
+            System.out.println("Background music not found: " + musicFile);
+        }
+    }
+
+    private void showRandomPeppaPopup(String message) {
+        String[] peppaImages = {"peppa1.png", "peppa2.png", "peppa3.png"};
+        SecureRandom random = new SecureRandom();
+        String randomImage = peppaImages[random.nextInt(peppaImages.length)];
+        ImageIcon peppaIcon = new ImageIcon(getClass().getResource(randomImage));
+        JOptionPane.showMessageDialog(this, message, "Peppa Says... 🐷", JOptionPane.INFORMATION_MESSAGE, peppaIcon);
+    }
+
+    private void showSimpleMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Notification 🐷", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void clearPeppaPasswordsFile() {
+        try (FileWriter writer = new FileWriter("peppa_passwords.txt", false)) {
+            writer.write("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new PeppaPasswordManager().setVisible(true));
+        SwingUtilities.invokeLater(() -> {
+            PeppaPasswordManager manager = new PeppaPasswordManager();
+            manager.setVisible(true);
+            manager.startBackgroundMusic("peppa.wav");
+        });
     }
 }
