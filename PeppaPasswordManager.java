@@ -9,15 +9,17 @@ import javax.sound.sampled.*;
 import java.net.URL;
 
 public class PeppaPasswordManager extends JFrame {
-
+    //basic button set ups
+    private String lastPeppaImage = "";
     private JTextField snortyPasswordField;
     private JTextArea piggySavedPasswords;
     private JButton oinkGenerateBtn, muddySaveBtn, georgeLoadBtn, clearBtn, clearAllPasswordsBtn;
-    private Clip backgroundMusic;
+    private Clip backgroundMusic; //only wav files
+    //all sound files must be wav
 
     public PeppaPasswordManager() {
         setTitle("🐷 Peppa Pig Password Manager 🐷");
-        setSize(400, 600);
+        setSize(1300, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Peppa colors
@@ -79,7 +81,7 @@ public class PeppaPasswordManager extends JFrame {
         clearAllPasswordsBtn.addActionListener(e -> {
             piggySavedPasswords.setText("");
             clearPeppaPasswordsFile();
-            playSound("clear.wav");
+            playSound("grunt.wav");
             showRandomPeppaPopup("Cleared all piggy passwords! 🐷");
             showSimpleMessage("All Passwords Cleared! 🧹");
         });
@@ -174,6 +176,7 @@ public class PeppaPasswordManager extends JFrame {
         }
     }
 
+    
     private void startBackgroundMusic(String musicFile) {
         try {
             URL url = getClass().getResource(musicFile);
@@ -187,14 +190,30 @@ public class PeppaPasswordManager extends JFrame {
             System.out.println("Background music not found: " + musicFile);
         }
     }
-
     private void showRandomPeppaPopup(String message) {
         String[] peppaImages = {"peppa1.png", "peppa2.png", "peppa3.png"};
         SecureRandom random = new SecureRandom();
-        String randomImage = peppaImages[random.nextInt(peppaImages.length)];
-        ImageIcon peppaIcon = new ImageIcon(getClass().getResource(randomImage));
-        JOptionPane.showMessageDialog(this, message, "Peppa Says... 🐷", JOptionPane.INFORMATION_MESSAGE, peppaIcon);
+        String randomImage;
+    
+        // Loop until we get a different image than last time
+        do {
+            randomImage = peppaImages[random.nextInt(peppaImages.length)];
+        } while (randomImage.equals(lastPeppaImage));
+    
+        lastPeppaImage = randomImage; 
+    
+        URL imageURL = getClass().getResource(randomImage);
+        if (imageURL != null) {
+            ImageIcon originalIcon = new ImageIcon(imageURL);
+            Image scaledImage = originalIcon.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
+            ImageIcon resizedIcon = new ImageIcon(scaledImage);
+            JOptionPane.showMessageDialog(this, message, "Peppa Says... 🐷", JOptionPane.INFORMATION_MESSAGE, resizedIcon);
+        } else {
+            JOptionPane.showMessageDialog(this, message, "Peppa Says... 🐷", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
+    
+    
 
     private void showSimpleMessage(String message) {
         JOptionPane.showMessageDialog(this, message, "Notification 🐷", JOptionPane.INFORMATION_MESSAGE);
