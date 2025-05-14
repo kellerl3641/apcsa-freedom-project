@@ -105,15 +105,16 @@ public class PeppaPasswordManager extends JFrame {
     }
 
     private String generatePeppaPassword(int length) {
-        String chars = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789!@#$%&";
-        SecureRandom random = new SecureRandom();
-        StringBuilder snort = new StringBuilder(length);
+    String chars = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789!@#$%&";
+    SecureRandom random = new SecureRandom();
+    String snort = "";
 
-        for (int i = 0; i < length; i++) {
-            snort.append(chars.charAt(random.nextInt(chars.length())));
-        }
-        return snort.toString();
+    for (int i = 0; i < length; i++) {
+        snort += chars.charAt(random.nextInt(chars.length()));
     }
+
+    return snort;
+}
 
     private void savePeppaPassword(String password) {
         if (password.isEmpty()) {
