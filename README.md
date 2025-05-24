@@ -10,13 +10,17 @@ For my project, I chose to independently study **Java Swing and its GUI** to hel
 
 [Product]()
 
-[Presentation]()
+[Presentation](https://docs.google.com/presentation/d/1iX1krTKinWm2T0_bzSSNZrLI3-xYmXQaWMV1BpY3bKU/edit?usp=sharing)
 
 ## Implications
 ##### PROS
-* 
+* Creates a set of passwords.
+* Safely stores them inside the text file.
+* Saves the password even after closing the app.
 ##### CONS
-* 
+* Has no virus detectors
+* Does not use cookies to store them safely
+* Display and size are not automatic; it may be cut out if the window is smaller
 
 
 ## Blog
